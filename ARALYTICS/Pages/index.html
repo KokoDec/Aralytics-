@@ -20,9 +20,9 @@
         }
     </script>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-gray-100 to-blue-50 font-jaro flex flex-col overflow-x-hidden">
+<body class="min-h-screen bg-gradient-to-br from-gray-100 to-blue-50 font-jaro flex flex-col overflow-x-hidden w-full">
     <!-- Navigation -->
-    <nav class="flex justify-between items-center px-4 py-6 sm:px-8">
+    <nav class="flex justify-between items-center px-4 py-6 sm:px-8 w-full">
         <div class="text-xl sm:text-2xl font-black text-gray-800">
             ARALYTICS
         </div>
@@ -42,9 +42,9 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="flex flex-col md:flex-row items-center justify-between px-4 py-8 sm:px-8 sm:py-12 max-w-7xl mx-auto gap-8 relative">
+    <main class="flex flex-col md:flex-row items-center justify-between px-4 py-8 sm:px-8 sm:py-12 mx-auto gap-8 relative overflow-visible w-full max-w-screen-xl">
         <!-- Left Content - Text Content -->
-        <div class="flex-1 max-w-2xl order-1 md:order-1 text-center md:text-left">
+        <div class="flex-1 max-w-2xl order-1 md:order-1 text-center md:text-left z-10">
             <!-- Main Heading -->
             <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6">
                 <span class="text-orange-500">Smarter Reviews</span>
@@ -64,24 +64,24 @@
         </div>
         
         <!-- Right Content - Robot Image with Speech Bubble (More Right) -->
-        <div class="flex-1 flex justify-end items-center relative order-2 md:order-2 ml-8 pr-24 lg:pr-48 xl:pr-72 -mr-10 lg:-mr-20">
-            <div class="relative translate-x-28 lg:translate-x-44 xl:translate-x-60 translate-y-6 lg:translate-y-10">
+        <div class="flex-1 flex justify-end items-center relative order-2 md:order-2 min-w-0 max-w-full -mr-8 md:-mr-16 lg:-mr-24 xl:-mr-32 z-40 overflow-visible">
+            <div class="relative translate-y-8 lg:translate-y-12 xl:translate-y-16 translate-x-12 md:translate-x-24 lg:translate-x-36 xl:translate-x-48 z-40">
                 <!-- Speech Bubble for Robot -->
-                <div class="absolute -top-16 -left-12 z-20">
+                <div class="absolute top-8 -left-4 z-70">
                     <div class="bg-white rounded-lg p-3 sm:p-4 shadow-lg">
                         <p class="text-gray-700 text-xs sm:text-sm whitespace-nowrap">Hi, I'm ARA your learning buddy!</p>
-                        <div class="absolute bottom-0 left-8 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-white transform translate-y-full"></div>
+                        <div class="absolute bottom-0 right-8 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-white transform translate-y-full"></div>
                     </div>
                 </div>
                 
                 <!-- Robot Image -->
-                <img src="../img/robot.png" alt="ARA Learning Buddy Robot" class="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-contain relative z-10 drop-shadow-xl">
+                <img src="../img/robot.png" alt="ARA Learning Buddy Robot" class="w-[400px] h-[400px] sm:w-[450px] sm:h-[450px] md:w-[500px] md:h-[500px] lg:w-[550px] lg:h-[550px] xl:w-[600px] xl:h-[600px] object-contain relative z-40 drop-shadow-xl scale-x-[-1] max-w-none">
             </div>
         </div>
     </main>
 
     <!-- Curved Shape - Fixed Back to Original Position -->
-    <div class="fixed bottom-0 right-0 w-3/5 h-full pointer-events-none overflow-hidden translate-x-8 md:translate-x-16 lg:translate-x-24 xl:translate-x-40">
+    <div class="fixed bottom-0 right-0 w-3/5 h-full pointer-events-none overflow-hidden translate-x-8 md:translate-x-16 lg:translate-x-24 xl:translate-x-40 z-50">
         <svg width="100%" height="100%" viewBox="0 0 500 600" class="absolute bottom-0 right-0">
             <!-- Curved Shape with Sharp Pointed Edge -->
             <path d="M 500 0 
