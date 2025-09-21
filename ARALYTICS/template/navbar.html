@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- Tailwind CSS CDN (per your request) -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<title>Sidebar</title>
+	</head>
+	<body>
+
+		<!-- Vertical sidebar (desktop-focused; not changing other breakpoints) -->
+		<!-- Increased width and updated background color per request -->
+		<nav class="fixed left-0 top-0 h-screen w-24 bg-[#242D59] flex flex-col items-center shadow-lg">
+
+
+			<!-- Primary buttons (no gaps so icons are flush) -->
+			<!-- Moved these further down (mt-40) to lower the Dashboard/Flashcards/Multiple/Quiz/Accounts group -->
+			<div class="flex flex-col gap-6 mt-40">
+				<a href="#" class="group w-14 h-14 flex items-center justify-center p-0 rounded-none hover:bg-white/10 focus:outline-none" aria-label="Dashboard">
+					<img src="../img/dashboard-icon.png" alt="Dashboard" class="block w-full h-full object-contain" />
+				</a>
+
+				<a href="#" class="group w-14 h-14 flex items-center justify-center p-0 rounded-none hover:bg-white/10 focus:outline-none" aria-label="Flashcards">
+					<img src="../img/flashcard.png" alt="Flashcards" class="block w-full h-full object-contain" />
+				</a>
+
+				<a href="#" class="group w-14 h-14 flex items-center justify-center p-0 rounded-none hover:bg-white/10 focus:outline-none" aria-label="Multiple Choice">
+					<img src="../img/multiple-icon.png" alt="Multiple Choice" class="block w-full h-full object-contain" />
+				</a>
+
+				<a href="#" class="group w-14 h-14 flex items-center justify-center p-0 rounded-none hover:bg-white/10 focus:outline-none" aria-label="Quiz">
+					<img src="../img/quiz.png" alt="Quiz" class="block w-full h-full object-contain" />
+				</a>
+         
+				<a href="#" class="group w-12 h-12 flex items-center justify-center p-0 rounded-none hover:bg-white/10 focus:outline-none" aria-label="Accounts">
+					<img src="../img/accounts.png" alt="Accounts" class="block w-full h-full object-contain" />
+				</a>
+
+			</div>
+
+			<!-- bottom group (push to bottom, no gaps) -->
+			<div class="mt-auto mb-6 flex flex-col gap-4">
+				
+				<a href="#" class="group w-12 h-12 flex items-center justify-center p-0 rounded-none hover:bg-white/10 focus:outline-none" aria-label="Questions">
+					<img src="../img/question.png" alt="Questions" class="block w-full h-full object-contain" />
+				</a>
+			</div>
+
+		</nav>
+
+		<!-- Page content placeholder (flush with sidebar) -->
+		<div class="ml-24 p-0">
+			<!-- ...existing page content will go here when this template is included... -->
+		</div>
+
+	</body>
+</html>
+
