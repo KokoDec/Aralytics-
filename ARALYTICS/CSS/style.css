@@ -1,0 +1,123 @@
+/* Fallback styles for speech bubble positioning on small devices */
+@media (min-width: 375px) and (max-width: 425px) {
+	.speech-bubble {
+		/* move the bubble slightly downward and to the right so it sits above the robot */
+		transform: translate(-40%, -90%) !important; /* lower bubble more and nudge right */
+		left: 48% !important; /* nudge bubble a bit further to the right */
+		min-width: 6.5rem !important;
+		max-width: 9rem !important;
+		padding: 0.4rem 0.6rem !important;
+		z-index: 70 !important; /* make sure bubble sits above the robot */
+	}
+	.speech-bubble .speech-tail {
+		bottom: -18px !important; /* push tail lower to match new bubble position */
+		left: 54% !important; /* re-center tail under adjusted bubble */
+		border-left-width: 6px !important;
+		border-right-width: 6px !important;
+		border-top-width: 6px !important;
+	}
+	.speech-bubble .bubble-title { font-size: 0.7rem !important; }
+	.speech-bubble .bubble-sub { font-size: 0.6rem !important; }
+
+	/* Move the robot downward on small devices between 375px and 425px */
+	.robot-img {
+		width: 10rem !important; /* slightly smaller to fit */
+		/* raise robot up a bit */
+		transform: scaleX(-1) translateX(-0.4rem) translateY(3rem) !important;
+		position: relative !important;
+		z-index: 60 !important; /* make sure it's above footer */
+	}
+
+	/* Tweak hero heading sizes and spacing to avoid shrinking/wrapping */
+	/* target the Jaro headings in Pages/index.php */
+	.w-\[40\%\] {
+		width: 48% !important; /* give more room on small screens */
+		padding: 0 !important;
+		/* cancel the utility class -translate-y-44 and push down */
+		transform: translateY(6rem) !important;
+	}
+	.w-\[45\%\] { /* right column */
+		width: 52% !important;
+	}
+
+	/* Make the layout stack and center on small screens */
+	main {
+		display: flex !important;
+		flex-direction: column !important;
+		align-items: center !important;
+		justify-content: center !important;
+		gap: 1rem !important;
+	}
+
+	.w-\[40\%\] {
+		text-align: center !important;
+		transform: translateY(-2rem) !important; /* move the whole block up a bit more */
+	}
+
+	/* Slightly enlarge the first heading and nudge it down */
+	.w-\[40\%\] h1 {
+		font-size: 2.6rem !important;
+		line-height: 1.02 !important;
+		margin-top: 0 !important; /* remove extra margin */
+		transform: translateY(-4rem) !important; /* lift the heading more */
+	}
+	.w-\[40\%\] h2 {
+		font-size: 2.2rem !important;
+		line-height: 1.05 !important;
+		transform: translateY(-3rem) !important; /* lift second line as well */
+	}
+
+	/* Make the hero subtitle smaller on narrow (375-425px) screens */
+	.w-\[40\%\] p {
+		font-size: 0.75rem !important; /* even smaller subtitle text */
+		line-height: 1.2 !important;
+		max-width: 18rem !important; /* tighter width for narrow screens */
+		margin-left: auto !important;
+		margin-right: auto !important;
+		transform: translateY(-0.6rem) !important; /* lift subtitle slightly */
+	}
+
+	/* Make top-left brand smaller on narrow phones */
+	.brand-label {
+		font-size: 32px !important; /* reduce from 48px to 32px */
+		line-height: 1 !important;
+	}
+}
+
+/* Optional: make sure the tail remains visible and crisp */
+.speech-bubble {
+	z-index: 50;
+}
+
+
+
+
+
+
+
+
+
+/* Shrink robot only between 768px and 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+	.robot-img {
+		width: 20rem !important;
+		transform: scaleX(-1) translateX(-0.4rem) translateY(-1.6rem) !important;
+	}
+}
+
+
+
+
+
+
+
+
+
+/* Slightly smaller robot and lowered position for 1024px - 1439px */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .robot-img {
+    width: 30rem !important;
+    transform: scaleX(-1) translateX(-1.2rem) translateY(-3rem) !important;
+  }
+}
+
