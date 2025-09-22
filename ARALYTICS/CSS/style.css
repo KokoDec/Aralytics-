@@ -7,7 +7,7 @@
 		min-width: 6.5rem !important;
 		max-width: 9rem !important;
 		padding: 0.4rem 0.6rem !important;
-		z-index: 70 !important; /* make sure bubble sits above the robot */
+		z-index: 30 !important; /* lowered so it doesn't overlap modal (modal z-50) */
 	}
 	.speech-bubble .speech-tail {
 		bottom: -18px !important; /* push tail lower to match new bubble position */
@@ -25,7 +25,7 @@
 		/* raise robot up a bit */
 		transform: scaleX(-1) translateX(-0.4rem) translateY(3rem) !important;
 		position: relative !important;
-		z-index: 60 !important; /* make sure it's above footer */
+		z-index: 20 !important; /* lower than modal */
 	}
 
 	/* Tweak hero heading sizes and spacing to avoid shrinking/wrapping */
@@ -82,11 +82,38 @@
 		font-size: 32px !important; /* reduce from 48px to 32px */
 		line-height: 1 !important;
 	}
+
+	/* Slightly reduce modal login button size on narrow phones so it doesn't look oversized */
+	#login-modal #login-form button[type="submit"] {
+		padding: 0.5rem 0.75rem !important; /* smaller vertical/horizontal padding */
+		font-size: 0.95rem !important; /* slightly smaller text */
+		border-radius: 0.5rem !important; /* keep rounded but a bit smaller */
+	}
 }
 
 /* Optional: make sure the tail remains visible and crisp */
 .speech-bubble {
 	z-index: 50;
+}
+
+/* Base robot image positioning (global default) */
+.robot-img {
+	/* shift robot down slightly across all screen sizes except where media queries override */
+	transform: scaleX(-1) translateX(-0.4rem) translateY(2rem);
+}
+
+/* (Modal styling handled by Tailwind classes in the page.) */
+
+/* Make the top-right login trigger slightly smaller */
+#login-btn {
+	padding: 0.45rem 0.8rem !important; /* smaller than px-5 py-3 */
+	font-size: 0.95rem !important;
+	gap: 0.5rem !important; /* reduce space between text and icon */
+}
+
+#login-btn img {
+	height: 1.15rem !important; /* slightly smaller icon */
+	width: 1.15rem !important;
 }
 
 
@@ -102,6 +129,16 @@
 	.robot-img {
 		width: 20rem !important;
 		transform: scaleX(-1) translateX(-0.4rem) translateY(-1.6rem) !important;
+	}
+
+	/* Slightly reduce brand label on tablet-sized screens */
+	.brand-label {
+		font-size: 36px !important;
+	}
+
+	/* Nudge hero left column up a bit on tablet screens */
+	.w-\[40\%\] {
+		transform: translateY(-2.5rem) !important;
 	}
 }
 
