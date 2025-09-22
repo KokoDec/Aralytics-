@@ -55,9 +55,9 @@
 			<polygon points="0,0 180,0 180,96 120,96" fill="#1800c9" />
 		</svg>
 	</div>
-		<div class="fixed bottom-0 right-0 w-[300px] h-[300px] z-0 pointer-events-none">
+		<div class="absolute  bottom-5 right-0 w-[600px] h-[300px] z-0 pointer-events-none">
 			<svg
-				viewBox="0 0 300 300"
+				viewBox="0 0 300 400"
 				xmlns="http://www.w3.org/2000/svg"
 				class="w-full h-full"
 				preserveAspectRatio="none"
