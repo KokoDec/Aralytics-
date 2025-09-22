@@ -1,3 +1,51 @@
+/* Responsive speech bubble container */
+@media (max-width: 768px) {
+	.speech-bubble {
+		min-width: 7rem;
+		max-width: 10rem;
+		padding: 0.5rem 0.7rem;
+		font-size: 0.95rem;
+	}
+	.speech-bubble .bubble-title {
+		font-size: 1rem;
+	}
+	.speech-bubble .bubble-sub {
+		font-size: 0.85rem;
+	}
+}
+@media (min-width: 769px) {
+	.speech-bubble {
+		min-width: 8rem;
+		max-width: 14rem;
+		padding: 0.75rem 1.25rem;
+		font-size: 1.1rem;
+	}
+	.speech-bubble .bubble-title {
+		font-size: 1.15rem;
+	}
+	.speech-bubble .bubble-sub {
+		font-size: 1rem;
+	}
+}
+/* Responsive speech bubble tail */
+@media (max-width: 768px) {
+	.speech-bubble::after {
+		left: 50%;
+		transform: translateX(-50%);
+		border-left: 16px solid transparent;
+		border-right: 16px solid transparent;
+		border-top: 16px solid #fff;
+	}
+}
+@media (min-width: 769px) {
+	.speech-bubble::after {
+		left: 80%; /* point tail to robot on desktop */
+		transform: translateX(-10%);
+		border-left: 16px solid transparent;
+		border-right: 0 solid transparent;
+		border-top: 16px solid #fff;
+	}
+}
 /* Fallback styles for speech bubble positioning on small devices */
 @media (min-width: 375px) and (max-width: 425px) {
 	.speech-bubble {
@@ -93,6 +141,7 @@
 
 /* Optional: make sure the tail remains visible and crisp */
 .speech-bubble {
+	position: relative;
 	z-index: 50;
 }
 
@@ -115,7 +164,20 @@
 	height: 1.15rem !important; /* slightly smaller icon */
 	width: 1.15rem !important;
 }
-
+/* Speech bubble tail pointing to robot */
+.speech-bubble::after {
+	content: '';
+	position: absolute;
+	bottom: -16px;
+	left: 80%; /* move tail to right side */
+	transform: translateX(-10%);
+	width: 0;
+	height: 0;
+	border-left: 16px solid transparent;
+	border-right: 0 solid transparent;
+	border-top: 16px solid #fff;
+	filter: drop-shadow(0 2px 2px rgba(0,0,0,0.10));
+}
 
 
 
