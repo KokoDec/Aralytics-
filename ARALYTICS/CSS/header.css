@@ -1,0 +1,49 @@
+/* Small-phone-only header adjustments: target only devices between 375px and 425px wide */
+@media (min-width: 375px) and (max-width: 425px) {
+	/* Move header slightly closer to top and make the overall header smaller */
+		/* match the header element's utility classes to boost specificity */
+		.w-full.fixed.top-6.left-0.flex.justify-center,
+		header {
+			top: 4rem !important; /* move header down a bit more for small phones (375-425px) */
+			left: 0 !important; /* ensure centered positioning remains */
+			padding: 0.15rem 0 !important;
+			transform: translateY(0) !important;
+		}
+	/* Target the centered pill nav in template/header.html */
+			/* increase specificity for nav by targeting its utility classes */
+			header.bg-white\/90.backdrop-blur-sm.rounded-full.shadow-md.px-10.py-3.flex.items-center.gap-12,
+			header nav {
+				padding-left: 0.9rem !important; /* ~px-4 */
+				padding-right: 0.9rem !important;
+				padding-top: 0.35rem !important; /* smaller vertical padding */
+				padding-bottom: 0.35rem !important;
+				gap: 0.5rem !important; /* further reduce gap between links */
+				border-radius: 9999px !important; /* keep pill look */
+				box-shadow: 0 6px 10px rgba(0,0,0,0.06) !important; /* subtle shadow for small screens */
+			}
+
+	/* Reduce the nav link size so the pill fits nicely */
+			/* force smaller link size and padding */
+			header nav a,
+			header nav a.text-lg.font-extrabold.tracking-wider.text-gray-800:hover\:text-gray-900 {
+				font-size: 0.82rem !important; /* noticeably smaller for narrow phones */
+				font-weight: 800 !important; /* keep bold look */
+				letter-spacing: 0.01em !important;
+				padding: 0.12rem 0.28rem !important; /* tighten clickable area */
+			}
+
+	/* Slightly shrink the top-left brand label (Pages/index.php) */
+	.brand-label {
+		font-size: 34px !important;
+	}
+
+	/* Shrink the login button text and icon on these narrow widths */
+	.inline-flex.items-center img {
+		height: 1.2rem !important; /* ~19px */
+		width: 1.2rem !important;
+	}
+	.inline-flex.items-center .font-semibold {
+		font-size: 0.95rem !important;
+	}
+}
+
