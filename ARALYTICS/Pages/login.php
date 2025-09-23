@@ -60,7 +60,7 @@
         <div id="login-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
         <!-- modal box (centered) -->
         <div class="flex items-center justify-center min-h-screen px-4">
-            <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md mx-auto p-6 z-10">
+            <div class="relative modal-box bg-white rounded-2xl shadow-2xl w-full max-w-md mx-auto p-6 z-10">
                 <button id="login-close" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl leading-none">&times;</button>
                 <!-- Immediate login form (shows when modal opens) -->
                 <form id="login-form" action="#" method="post" class="space-y-4">
@@ -94,7 +94,7 @@
     <div id="register-modal" class="fixed inset-0 z-50 hidden">
         <div id="register-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
         <div class="flex items-center justify-center min-h-screen px-4">
-            <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md mx-auto p-6 z-10">
+            <div class="relative modal-box bg-white rounded-2xl shadow-2xl w-full max-w-md mx-auto p-6 z-10">
                 <button id="register-close" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl leading-none">&times;</button>
                 <h3 class="text-lg font-semibold mb-4">Create an account</h3>
                 <form id="register-form" action="#" method="post" class="space-y-4">
