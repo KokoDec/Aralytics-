@@ -1,6 +1,28 @@
 console.log('login script loaded');
 // Modal handling for login modal
 document.addEventListener('DOMContentLoaded', function () {
+	// Mobile hamburger toggle: show/hide #main-nav on small screens
+	const burgerBtn = document.getElementById('burger-btn');
+	const mainNav = document.getElementById('main-nav');
+	if (burgerBtn && mainNav) {
+		// ensure burger is only visible via CSS; JS only toggles state
+		burgerBtn.addEventListener('click', function (e) {
+			e.preventDefault();
+			const isOpen = mainNav.classList.toggle('open');
+			burgerBtn.setAttribute('aria-expanded', String(isOpen));
+			burgerBtn.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+		});
+
+		// close nav after link click on mobile
+		mainNav.addEventListener('click', function (e) {
+			const t = e.target;
+			if (t && t.tagName === 'A' && mainNav.classList.contains('open')) {
+				mainNav.classList.remove('open');
+				burgerBtn.setAttribute('aria-expanded', 'false');
+				burgerBtn.setAttribute('aria-label', 'Open navigation');
+			}
+		});
+	}
 	const loginBtn = document.getElementById('login-btn');
 	const loginModal = document.getElementById('login-modal');
 	const loginOverlay = document.getElementById('login-overlay');
@@ -16,6 +38,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	function openModal() {
 		loginModal.classList.remove('hidden');
 		document.body.style.overflow = 'hidden';
+		// blur the header so it appears behind the modal
+		try {
+			const hdr = document.querySelector('header');
+			if (hdr) hdr.classList.add('modal-blur');
+		} catch (err) { /* ignore */ }
 	}
 
 	function closeModal() {
@@ -25,6 +52,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 		loginModal.classList.add('hidden');
 		document.body.style.overflow = '';
+		// remove header blur when modal closes
+		try {
+			const hdr = document.querySelector('header');
+			if (hdr) hdr.classList.remove('modal-blur');
+		} catch (err) { /* ignore */ }
 	}
 
 	loginBtn.addEventListener('click', function (e) {
@@ -97,6 +129,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		console.log('Opening register modal');
 		registerModal.classList.remove('hidden');
 		document.body.style.overflow = 'hidden';
+		// blur the header while register modal is open
+		try {
+			const hdr = document.querySelector('header');
+			if (hdr) hdr.classList.add('modal-blur');
+		} catch (err) { /* ignore */ }
 	}
 
 	function closeRegister() {
@@ -106,6 +143,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 		registerModal.classList.add('hidden');
 		document.body.style.overflow = '';
+		// remove header blur when register modal closes
+		try {
+			const hdr = document.querySelector('header');
+			if (hdr) hdr.classList.remove('modal-blur');
+		} catch (err) { /* ignore */ }
 	}
 
 	if (createAccountBtn) {
