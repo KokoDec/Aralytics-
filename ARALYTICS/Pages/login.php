@@ -8,7 +8,7 @@
     <!-- Google Font: Jaro (400) -->
     <link href="https://fonts.googleapis.com/css2?family=Jaro:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="../CSS/header.css">
+    
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col justify-between">
     <?php include __DIR__ . '/../template/header.html'; ?>
@@ -41,7 +41,7 @@
                 <!-- tail (keeps attached when bubble moves) -->
                 <span class="speech-tail absolute left-1/2 -translate-x-1/2 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-white bottom-[-8px]"></span>
             </div>
-            <img src="../img/robot.png" alt="Robot" class="robot-img max-w-full h-auto w-[45rem] scale-x-[-1] translate-x-[-2rem] translate-y-[1rem]" />
+            <img src="../img/robot.png" alt="Robot" class="robot-img max-w-full h-auto w-[45rem] translate-x-[-2rem] translate-y-[1rem]" />
         </div>
     </main>
     <!-- Footer -->
