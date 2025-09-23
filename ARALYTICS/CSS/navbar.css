@@ -1,0 +1,110 @@
+/* navbar custom styles and small-screen media queries */
+
+/* By default keep the burger hidden (Tailwind 'hidden' is present on the button).
+   We'll override visibility only inside the small-screen media query below. */
+.burger {
+	display: none;
+	background: transparent;
+	border: none;
+	padding: 0.25rem;
+	cursor: pointer;
+}
+
+/* Provide a smooth appearance when the nav toggles */
+nav {
+	transition: all 200ms ease-in-out;
+}
+
+/* Small-screen behaviour: show burger between 375px and 760px, hide nav until opened */
+@media (min-width: 375px) and (max-width: 760px) {
+	 /* Force the burger visible on the target small screens (all widths <= 760px)
+		 so the burger is available even on very narrow devices. */
+	.burger {
+		display: block !important;
+		position: fixed;
+		left: 0.75rem;
+		top: 0.75rem;
+		z-index: 60;
+		/* No background: keep the burger transparent so it sits cleanly on the page */
+		width: 44px;
+		height: 44px;
+		padding: 8px;
+		border-radius: 8px; /* keep touch target rounded but transparent */
+		background: transparent;
+		box-shadow: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		border: none;
+		cursor: pointer;
+		outline: none;
+	}
+
+	/* Ensure the three burger lines are visible and well-sized */
+	.burger .burger-line {
+		width: 20px !important;
+		height: 2px !important;
+		background: #000 !important; /* black burger lines */
+		border-radius: 2px;
+		margin: 3px 0 !important;
+	}
+
+	/* Hide the sidebar nav by default on these small screens. When the nav
+	   has the .open class it will appear as a full-screen, centered column. */
+	nav {
+		/* Use !important so Tailwind's .flex/.block utilities don't override this
+		   on the small-screen breakpoint. The .open rule already uses !important
+		   to show the overlay when needed. */
+		display: none !important;
+	}
+
+	nav.open {
+		display: flex !important;
+		position: fixed;
+		left: 0;
+		top: 0;
+		/* Open as a narrow sidebar (match desktop w-24 = 6rem) instead of full-screen */
+		width: 6rem;
+		height: 100vh;
+		background: #242D59; /* matches desktop background */
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		/* Make room for the burger and push the icons further down on this
+		   specific small-screen range (375–760px). */
+		padding-top: 4rem; /* push icons down so they're not under the burger */
+		gap: 1.25rem;
+		z-index: 55;
+		overflow-y: auto;
+		box-shadow: 2px 0 6px rgba(0,0,0,0.12);
+	}
+
+	/* Slight adjustments to the icon group inside the nav when opened */
+	nav.open .flex.flex-col {
+		gap: 1.5rem;
+		/* additional margin so icons appear lower on the screen when nav opens */
+		margin-top: 3.5rem;
+	}
+
+	/* Make sure icons are sized well on small screens */
+	/* Smaller icon anchors and images when nav is open (375px - 760px)
+	   to create a more compact sidebar on small screens. */
+	nav.open a {
+		width: 36px !important;
+		height: 36px !important;
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		padding: 0 !important;
+		border-radius: 4px !important;
+	}
+
+	nav.open a img {
+		width: 28px !important;
+		height: 28px !important;
+		object-fit: contain;
+	}
+
+}
+
