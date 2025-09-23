@@ -2,7 +2,8 @@
 @media (min-width: 375px) and (max-width: 425px) {
 	.speech-bubble {
 		/* move the bubble slightly downward and to the right so it sits above the robot */
-		transform: translate(-40%, -90%) !important; /* lower bubble more and nudge right */
+		/* slightly raise the "Hi I'm Ara" bubble more on 375–425px screens */
+		transform: translate(-40%, -55%) !important; /* raise bubble a bit more toward robot's head */
 		left: 48% !important; /* nudge bubble a bit further to the right */
 		min-width: 6.5rem !important;
 		max-width: 9rem !important;
@@ -10,7 +11,8 @@
 		z-index: 30 !important; /* lowered so it doesn't overlap modal (modal z-50) */
 	}
 	.speech-bubble .speech-tail {
-		bottom: -18px !important; /* push tail lower to match new bubble position */
+		/* adjust tail position to remain attached after raising the bubble */
+		bottom: -140px !important; /* keep tail visually connected to robot */
 		left: 54% !important; /* re-center tail under adjusted bubble */
 		border-left-width: 6px !important;
 		border-right-width: 6px !important;
@@ -23,7 +25,7 @@
 	.robot-img {
 		width: 10rem !important; /* slightly smaller to fit */
 		/* raise robot up a bit */
-		transform: scaleX(-1) translateX(-0.4rem) translateY(3rem) !important;
+		transform: translateX(-0.4rem) translateY(3rem) !important;
 		position: relative !important;
 		z-index: 20 !important; /* lower than modal */
 	}
@@ -99,7 +101,7 @@
 /* Base robot image positioning (global default) */
 .robot-img {
 	/* shift robot down slightly across all screen sizes except where media queries override */
-	transform: scaleX(-1) translateX(-0.4rem) translateY(2rem);
+	transform: translateX(-0.4rem) translateY(2rem);
 }
 
 /* (Modal styling handled by Tailwind classes in the page.) */
@@ -109,11 +111,53 @@
 	padding: 0.45rem 0.8rem !important; /* smaller than px-5 py-3 */
 	font-size: 0.95rem !important;
 	gap: 0.5rem !important; /* reduce space between text and icon */
+	/* ensure the login button sits above the header (header uses very large z-index)
+	   so it remains clickable */
+	position: relative !important;
+	z-index: 11000 !important;
 }
 
 #login-btn img {
 	height: 1.15rem !important; /* slightly smaller icon */
 	width: 1.15rem !important;
+}
+
+/* When a modal is open, add this class to elements that should blur visually.
+	We apply this to the <header> element from JS so header content is blurred
+	while the modal overlay is visible. Use filter + backdrop-filter for best
+	cross-browser results and include a transition for smoothness. */
+.modal-blur {
+	 /* place under modal (modal uses z-50). Keep header below overlay so the
+		 modal's overlay/backdrop can darken and blur the background visually. */
+	 z-index: 40 !important;
+	 position: relative !important;
+	 -webkit-backdrop-filter: blur(6px);
+	 backdrop-filter: blur(6px);
+	 filter: blur(6px);
+	 transition: filter 180ms ease, backdrop-filter 180ms ease;
+}
+
+/* Ensure modal containers and their overlays sit above the header (which may use very
+   large z-index values). This guarantees the overlay/backdrop-blur actually affects
+   the header and other page chrome when a modal is open. */
+#login-modal, #register-modal {
+	z-index: 11050 !important; /* above header (10000) */
+}
+
+#login-overlay, #register-overlay {
+	z-index: 11040 !important; /* below modal box but above header */
+}
+
+/* Keep the actual modal box sharp/unblurred even when header or background is blurred.
+   Place it above the overlay and cancel any inherited blur/filter. */
+.modal-box {
+	z-index: 11060 !important; /* above overlay and header */
+	/* ensure the box itself is not visually blurred by parent filters */
+	-webkit-backdrop-filter: none !important;
+	backdrop-filter: none !important;
+	filter: none !important;
+	/* create a new stacking context to isolate visual effects */
+	position: relative !important;
 }
 
 
@@ -128,7 +172,7 @@
 @media (min-width: 768px) and (max-width: 1023px) {
 	.robot-img {
 		width: 20rem !important;
-		transform: scaleX(-1) translateX(-0.4rem) translateY(-1.6rem) !important;
+		transform: translateX(-0.4rem) translateY(-1.6rem) !important;
 	}
 
 	/* Slightly reduce brand label on tablet-sized screens */
@@ -154,7 +198,36 @@
 @media (min-width: 1024px) and (max-width: 1439px) {
   .robot-img {
     width: 30rem !important;
-    transform: scaleX(-1) translateX(-1.2rem) translateY(-3rem) !important;
+		transform: translateX(-1.2rem) translateY(-3rem) !important;
   }
+}
+
+/* For screens from 426px up to 1024px: place the robot on the left and ensure it faces left
+ 	 by moving the right-column container to start alignment and nudging the robot and
+ 	 speech-bubble so they sit correctly on the left side. This avoids overriding the
+ 	 375–425px mobile-specific positioning. */
+@media (min-width: 426px) and (max-width: 1024px) {
+	/* make the right column align items to the start (left) instead of end */
+	.w-\[45\%\] {
+		justify-content: flex-start !important;
+		padding-left: 1rem !important; /* small left inset */
+	}
+
+	/* move the speech bubble to the right of the robot when robot is on left */
+	.speech-bubble {
+		left: 65% !important;
+		transform: translateX(-50%) translateY(-420%) !important;
+		text-align: left !important;
+	}
+
+	.speech-bubble .speech-tail {
+		left: 66% !important; /* reposition tail under the adjusted bubble */
+	}
+
+	/* nudge the robot inward from the left and keep the general vertical offset */
+	.robot-img {
+		transform: translateX(2rem) translateY(1rem) !important;
+		/* keep width adjustments from narrower breakpoints (10rem / 20rem) when present */
+	}
 }
 
