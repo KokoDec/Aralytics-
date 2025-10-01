@@ -34,16 +34,118 @@
 
 	/* Slightly shrink the top-left brand label (Pages/index.php) */
 	.brand-label {
-		font-size: 34px !important;
+		font-size: 28px !important; /* reduced for very narrow phones */
+		/* lift the brand label slightly more on narrow phones so "ARALYTICS" sits higher */
+		top: -0.8rem !important;
+		transform: translateY(-2.6rem) !important;
 	}
 
 	/* Shrink the login button text and icon on these narrow widths */
 	.inline-flex.items-center img {
-		height: 1.2rem !important; /* ~19px */
-		width: 1.2rem !important;
+		height: 1rem !important; /* smaller icon to match reduced button */
+		width: 1rem !important;
 	}
 	.inline-flex.items-center .font-semibold {
-		font-size: 0.95rem !important;
+		font-size: 0.85rem !important; /* smaller label text */
+	}
+}
+
+/* Small-phone-only header adjustments for narrower phones: 320px - 374px
+   Duplicate the 375-425 rules so these narrower devices get the same
+   pill-nav sizing and burger behavior. */
+@media (min-width: 320px) and (max-width: 374px) {
+	/* Move header slightly closer to top and make the overall header smaller */
+		/* match the header element's utility classes to boost specificity */
+		.w-full.fixed.top-6.left-0.flex.justify-center,
+		headerear,
+		header {
+			top: 4rem !important; /* move header down a bit more for small phones (320-374px) */
+			left: 0 !important; /* ensure centered positioning remains */
+			padding: 0.15rem 0 !important;
+			transform: translateY(0) !important;
+		}
+	/* Target the centered pill nav in template/header.html */
+		/* increase specificity for nav by targeting its utility classes */
+		header.bg-white\/90.backdrop-blur-sm.rounded-full.shadow-md.px-10.py-3.flex.items-center.gap-12,
+		header nav {
+			padding-left: 0.9rem !important; /* ~px-4 */
+			padding-right: 0.9rem !important;
+			padding-top: 0.35rem !important; /* smaller vertical padding */
+			padding-bottom: 0.35rem !important;
+			gap: 0.5rem !important; /* further reduce gap between links */
+			border-radius: 9999px !important; /* keep pill look */
+			box-shadow: 0 6px 10px rgba(0,0,0,0.06) !important; /* subtle shadow for small screens */
+		}
+
+	/* Reduce the nav link size so the pill fits nicely */
+		/* force smaller link size and padding */
+		header nav a,
+		header nav a.text-lg.font-extrabold.tracking-wider.text-gray-800:hover\:text-gray-900 {
+			font-size: 0.82rem !important; /* noticeably smaller for narrow phones */
+			font-weight: 800 !important; /* keep bold look */
+			letter-spacing: 0.01em !important;
+			padding: 0.12rem 0.28rem !important; /* tighten clickable area */
+		}
+
+	/* Slightly shrink the top-left brand label (Pages/index.php) */
+	.brand-label {
+		font-size: 24px !important; /* match extra-small phones */
+		/* lift the brand label up a bit on very narrow phones so "ARALYTICS" sits higher */
+		top: -0.8rem !important; /* move label upward more */
+		transform: translateY(-2.9rem) !important; /* stronger upward shift than the base utility */
+	}
+
+	/* Shrink the login button text and icon on these narrow widths */
+	.inline-flex.items-center img {
+		height: 0.9rem !important; /* smaller icon */
+		width: 0.9rem !important;
+	}
+	.inline-flex.items-center .font-semibold {
+		font-size: 0.75rem !important; /* smaller label text */
+	}
+
+	/* show burger button on these narrow widths */
+	#burger-btn {
+		display: inline-flex !important;
+		align-items: center;
+		justify-content: center;
+		background: rgba(255,255,255,0.98);
+		border-radius: 8px;
+		padding: 0.25rem;
+		margin-right: 0.5rem;
+		box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+		border: 1px solid rgba(15,23,42,0.04);
+		z-index: 9999;
+	}
+
+	/* hide the pill nav by default on these very small screens to replace with burger */
+	#main-nav {
+		display: none !important;
+	}
+
+	/* when nav is active (via JS toggling .open), show it as a centered block below the header */
+	#main-nav.open {
+		display: flex !important;
+		position: absolute !important;
+		top: calc(100% + 0.5rem) !important;
+		left: 50% !important;
+		transform: translateX(-50%) !important;
+		width: calc(100% - 2rem) !important;
+		max-width: 380px !important;
+		flex-direction: column !important;
+		gap: 0.25rem !important;
+		padding: 0.6rem !important;
+		border-radius: 12px !important;
+		z-index: 9998 !important;
+		background: rgba(255,255,255,0.98) !important;
+	}
+
+	/* make links stack nicely in the dropdown */
+	#main-nav.open a {
+		display: block !important;
+		text-align: center !important;
+		padding: 0.45rem 0 !important;
+		font-size: 1rem !important;
 	}
 }
 
@@ -94,9 +196,20 @@
 	}
 }
 
+/* Tablet / small-desktop range: reduce brand label size between 768px and 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+	/* Make ARALYTICS smaller on tablet and small-desktop widths */
+	.brand-label {
+		font-size: 36px !important; /* down from 48px to fit better */
+		transform: translateY(-1.5rem) !important; /* maintain a mild upward alignment */
+	}
+}
+
 /* Keep header above everything so burger + dropdown never get covered */
 header {
 	z-index: 10000;
 	position: relative; /* header already often uses fixed; keep relative as safe fallback */
 }
+
+
 
