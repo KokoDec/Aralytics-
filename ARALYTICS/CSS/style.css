@@ -1,19 +1,234 @@
+/* Extra-small phones: target very narrow screens (320px - 374px)*/
+@media (min-width: 320px) and (max-width: 374px) {
+
+	/* Reduce the login button size and spacing so it fits comfortably */
+	#login-btn {
+		padding: 0.3rem 0.5rem !important; /* reduce vertical/horizontal padding */
+		font-size: 0.75rem !important; /* smaller label text */
+		gap: 0.3rem !important; /* less space between text and icon */
+	}
+
+	#login-btn img {
+		height: 0.9rem !important; /* slightly smaller icon to match reduced button */
+		width: 0.9rem !important;
+	}
+
+	/* Brand-related transforms removed (ARALYTICS moved to header) */
+	#login-btn { transform: translateY(0) !important; }
+
+	/* Reduce hero heading and subtitle sizes for very narrow phones */
+	.max-w-2xl {
+		width: 92% !important; /* let hero block use most of the narrow screen */
+		padding: 0 !important;
+		text-align: center !important;
+		transform: translateX(0.6rem) !important; /* nudge whole hero block slightly to the right */
+		position: relative !important; /* create stacking context so hero can sit above robot/bubble/header */
+		/* place hero below overlays/modals on very narrow phones */
+		z-index: 10 !important;
+	}
+
+	.max-w-2xl h1 {
+		font-size: 2rem !important; /* smaller main heading */
+		line-height: 1.02 !important;
+		/* small upward adjustment: bring the main heading slightly higher */
+		transform: translateX(0.6rem) translateY(0rem) !important;
+	}
+
+	.max-w-2xl h2 {
+		font-size: 1.8rem !important; /* smaller second line */
+		line-height: 1.04 !important;
+		/* small upward adjustment: bring the second heading slightly higher */
+		transform: translateX(0.6rem) translateY(0rem) !important;
+	}
+
+	.max-w-2xl p {
+		font-size: 0.68rem !important; /* smaller subtitle */
+		line-height: 1.2 !important;
+		max-width: 15.5rem !important; /* tighter width for narrow screens */
+		margin-left: auto !important;
+		margin-right: auto !important;
+		/* small upward adjustment: move the paragraph slightly higher */
+		transform: translateX(0.6rem) translateY(-0.12rem) !important;
+	}
+
+	/* Ensure the hero left column ("Smarter Reviews") lifts above the fixed header/login
+	   on very narrow phones. Use a combined selector to beat utility transforms and give
+	   a higher stacking context so it is not visually blocked. */
+	.w-\[40\%\].max-w-2xl,
+	.max-w-2xl.w-\[40\%\] {
+		/* lift the hero more and keep a slight right nudge per request */
+		/* small upward adjustment: reduce downward nudge so the left-hero block is slightly higher */
+		transform: translateX(2rem) translateY(0.06rem) !important;
+		position: relative !important;
+		z-index: 10 !important; /* lower so modals/overlays appear above the hero */
+	}
+
+	/* Also ensure any standalone .w-[40%] hero on this breakpoint gets the same nudge */
+	.w-\[40\%\] {
+		transform: translateX(2rem) translateY(6rem) !important;
+		position: relative !important;
+		z-index: 10 !important;
+	}
+
+	/* On very narrow phones (320-374px) hide the decorative robot and speech bubble
+	   — keeps the layout clean and avoids overlap with hero text */
+	.speech-bubble {
+		display: none !important;
+	}
+
+	.speech-bubble .speech-tail {
+		display: none !important;
+	}
+
+	.robot-img {
+		display: none !important;
+	}
+
+	/* Make the ABOUT heading and description smaller and allow wrapping on very narrow phones */
+	.about-heading {
+		font-size: 1.25rem !important; /* reduce size from large utility sizes */
+		line-height: 1.05 !important;
+		white-space: normal !important; /* allow wrapping instead of whitespace-nowrap */
+		transform: translateX(0) translateY(-1rem) !important; /* cancel left nudges; center heading */
+		max-width: 18rem !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+
+	.about-desc {
+		font-size: 0.66rem !important; /* shrink paragraph for narrow screens */
+		line-height: 1.25 !important;
+		max-width: 20rem !important; /* keep text column narrow to improve readability */
+		translate: none !important;
+		transform: translateX(0) translateY(0) !important; /* cancel nudges and center */
+		text-align: center !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		padding: 0 0.6rem !important;
+	}
+
+	/* Reset any large left margin utility (ml-48) applied in markup and center the about block */
+	.about-content {
+		margin-left: 0 !important;
+		padding-left: 0 !important;
+		transform: none !important;
+		display: block !important;
+		text-align: center !important;
+	}
+
+	/* Reduce about images so they fit on very narrow phones (book, reading, research) */
+	#about img.rounded-xl {
+		width: 10rem !important; /* smaller width */
+		height: 6rem !important; /* smaller height to match aspect */
+		object-fit: cover !important;
+		border-width: 2px !important; /* thinner white frame */
+		box-shadow: 0 6px 10px rgba(0,0,0,0.18) !important; /* slightly smaller shadow */
+	}
+
+	/* Nudge the Reading image slightly to the right (keep its current offset) */
+	#about img[alt="Reading"] {
+		transform: translateX(7rem) translateY(0) !important; /* nudge reading slightly left */
+		margin-left: 1.2rem !important; /* slightly smaller fallback spacing */
+	}
+
+	/* Move Book and Research further right than Reading */
+	#about img[alt="Book"] {
+		transform: translateX(12.5rem) translateY(0) !important; /* keep book position */
+		margin-left: 2.8rem !important; /* larger fallback spacing */
+	}
+
+	#about img[alt="Research"] {
+		transform: translateX(12.5rem) translateY(6rem) !important; /* move research further right and down */
+		margin-left: 2.8rem !important; /* larger fallback spacing */
+	}
+
+	/* Shrink and reposition the decorative circle-pattern image on very narrow phones */
+	img[alt="Blue Circles"], img[src*="circle-pattern.png"] {
+		width: 6.5rem !important; /* smaller visual size */
+		height: 3.5rem !important;
+		object-fit: contain !important;
+		position: absolute !important; /* override utility positioning */
+		left: -2rem !important; /* move it closer to the left edge */
+		bottom: 27rem !important; /* raised higher on the page */
+		z-index: 20 !important; /* keep stacking consistent */
+		opacity: 0.9 !important;
+	}
+
+	/* Slightly reduce contact card and icon sizes so the card fits better on very narrow phones */
+	#contact .bg-gray-200 {
+		padding: 1rem !important; /* reduce large p-10 padding */
+		width: 18rem !important; /* shrink card width from 30rem */
+		box-shadow: 0 8px 18px rgba(0,0,0,0.08) !important;
+		font-size: 0.95rem !important;
+	}
+
+	#contact .bg-gray-200 p.text-center.mb-6 {
+		font-size: 0.78rem !important; /* smaller leading paragraph */
+		margin-bottom: 0.5rem !important;
+	}
+
+	#contact .bg-gray-200 .w-20 {
+		width: 3.5rem !important; /* shrink round icon containers */
+		height: 3.5rem !important;
+		font-size: 1.25rem !important; /* smaller emoji/icon size */
+	}
+
+	#contact .bg-gray-200 .flex-1 {
+		font-size: 0.95rem !important; /* slightly smaller contact text */
+	}
+
+	#contact .bg-gray-200 .flex {
+		gap: 0.8rem !important; /* reduce spacing between icon and text */
+	}
+
+	/* Move the absolute contact card left (closer to center) on very narrow phones */
+	#contact .absolute.z-30 {
+		right: 1rem !important; /* small additional left nudge */
+		top: 8rem !important; /* move the card further down on very narrow phones */
+	}
+
+	/* Raise the absolute Contact heading so it sits higher on very narrow phones */
+	#contact h3 {
+		/* Make heading part of the document flow on very narrow phones so it scrolls normally
+		   and doesn't get stuck/stacked by absolute positioning. Raise it visually using
+		   margin-top rather than top/absolute offsets. */
+		position: relative !important;
+		top: auto !important;
+		left: auto !important;
+		transform: none !important;
+		margin-left: -3rem; /* small left nudge requested */
+		margin-top: -38rem !important; /* small visual raise */
+		text-align: center !important;
+		z-index: 11010 !important; /* keep above decorative images but below modals */
+	}
+
+	/* Make sure the contact container and its positioned wrapper don't clip the heading */
+	#contact, #contact .relative, #contact .max-w-4xl, #contact .relative.max-w-4xl {
+		overflow: visible !important; /* allow h3 to be shown outside its immediate box */
+	}
+}
+
+
+
+
+
 /* Fallback styles for speech bubble positioning on small devices */
 @media (min-width: 375px) and (max-width: 425px) {
 	.speech-bubble {
 		/* move the bubble slightly downward and to the right so it sits above the robot */
 		/* slightly raise the "Hi I'm Ara" bubble more on 375–425px screens */
-		transform: translate(-40%, -55%) !important; /* raise bubble a bit more toward robot's head */
-		left: 48% !important; /* nudge bubble a bit further to the right */
+		/* nudge bubble a bit further left for these small (375-425px) screens */
+		transform: translate(-54%, -55%) !important; /* move bubble slightly left */
+		left: 36% !important;
 		min-width: 6.5rem !important;
 		max-width: 9rem !important;
 		padding: 0.4rem 0.6rem !important;
 		z-index: 30 !important; /* lowered so it doesn't overlap modal (modal z-50) */
 	}
-	.speech-bubble .speech-tail {
-		/* adjust tail position to remain attached after raising the bubble */
-		bottom: -140px !important; /* keep tail visually connected to robot */
-		left: 54% !important; /* re-center tail under adjusted bubble */
+		.speech-bubble .speech-tail {
+			/* adjust tail position to remain attached after raising the bubble */
+			bottom: -140px !important; /* keep tail visually connected to robot */
+			left: 42% !important; /* reposition tail under moved bubble */
 		border-left-width: 6px !important;
 		border-right-width: 6px !important;
 		border-top-width: 6px !important;
@@ -24,8 +239,8 @@
 	/* Move the robot downward on small devices between 375px and 425px */
 	.robot-img {
 		width: 10rem !important; /* slightly smaller to fit */
-		/* raise robot up a bit */
-		transform: translateX(-0.4rem) translateY(3rem) !important;
+		/* move robot slightly more left so it better aligns with the speech bubble */
+		transform: translateX(-2rem) translateY(3rem) !important;
 		position: relative !important;
 		z-index: 20 !important; /* lower than modal */
 	}
@@ -35,8 +250,8 @@
 	.w-\[40\%\] {
 		width: 48% !important; /* give more room on small screens */
 		padding: 0 !important;
-		/* cancel the utility class -translate-y-44 and push down */
-		transform: translateY(6rem) !important;
+		/* cancel the utility class -translate-y-44 and push down; much stronger left nudge */
+		transform: translateX(-6rem) translateY(6rem) !important;
 	}
 	.w-\[45\%\] { /* right column */
 		width: 52% !important;
@@ -53,37 +268,103 @@
 
 	.w-\[40\%\] {
 		text-align: center !important;
-		transform: translateY(-2rem) !important; /* move the whole block up a bit more */
+		/* move the whole block up and left so the hero sits much further to the left */
+		transform: translateX(-6rem) translateY(-2rem) !important; /* much stronger left and up */
 	}
 
 	/* Slightly enlarge the first heading and nudge it down */
 	.w-\[40\%\] h1 {
-		font-size: 2.6rem !important;
-		line-height: 1.02 !important;
+		/* reduced size so the main hero heading fits on 375–425px screens and nudged further left */
+		font-size: 1.9rem !important; /* unchanged size */
+		line-height: 1.04 !important;
 		margin-top: 0 !important; /* remove extra margin */
-		transform: translateY(-4rem) !important; /* lift the heading more */
+		transform: translateX(-2.4rem) translateY(-2.6rem) !important; /* much stronger left nudge */
 	}
 	.w-\[40\%\] h2 {
-		font-size: 2.2rem !important;
-		line-height: 1.05 !important;
-		transform: translateY(-3rem) !important; /* lift second line as well */
+		/* reduced secondary heading size and nudged further left */
+		font-size: 1.6rem !important; /* unchanged size */
+		line-height: 1.06 !important;
+		transform: translateX(-2.4rem) translateY(-2rem) !important; /* much stronger left nudge */
 	}
 
 	/* Make the hero subtitle smaller on narrow (375-425px) screens */
 	.w-\[40\%\] p {
-		font-size: 0.75rem !important; /* even smaller subtitle text */
-		line-height: 1.2 !important;
-		max-width: 18rem !important; /* tighter width for narrow screens */
+		font-size: 0.68rem !important; /* slightly smaller for improved fit */
+		line-height: 1.18 !important;
+		max-width: 16.5rem !important; /* tighter width for narrow screens */
 		margin-left: auto !important;
 		margin-right: auto !important;
-		transform: translateY(-0.6rem) !important; /* lift subtitle slightly */
+		transform: translateX(-1.6rem) translateY(-0.4rem) !important; /* stronger paragraph left nudge */
 	}
 
-	/* Make top-left brand smaller on narrow phones */
-	.brand-label {
-		font-size: 32px !important; /* reduce from 48px to 32px */
-		line-height: 1 !important;
+	/* Reduce About images so they fit nicely on 375-425px screens */
+	#about img.rounded-xl {
+		width: 9rem !important; /* slightly smaller than 10rem used for narrower phones */
+		height: 5.5rem !important;
+		object-fit: cover !important;
+		border-width: 1.5px !important; /* slightly thinner frame */
+		box-shadow: 0 6px 10px rgba(0,0,0,0.12) !important; /* lighter shadow */
 	}
+
+	/* Tweak individual image positions so they don't overlap the hero text */
+	#about img[alt="Reading"] {
+		transform: translateX(11rem) translateY(0) !important; /* nudged further to the right */
+		margin-left: 0.6rem !important;
+	}
+
+	#about img[alt="Book"] {
+		transform: translateX(15rem) translateY(0.5rem) !important; /* nudged slightly more left and slightly up */
+		margin-left: 1.2rem !important;
+	}
+
+	#about img[alt="Research"] {
+		transform: translateX(18rem) translateY(7rem) !important; /* moved further right and slightly down */
+		margin-left: 1.2rem !important;
+	}
+
+	/* Reduce and reposition decorative circle-pattern on 375-425px so it doesn't overlap hero */
+	img[alt="Blue Circles"], img[src*="circle-pattern.png"] {
+		width: 5.5rem !important; /* slightly larger visual size */
+		height: 3.2rem !important;
+		object-fit: contain !important;
+		position: absolute !important; /* override utility positioning */
+		left: -2.2rem !important; /* nudged further left */
+		bottom: 20rem !important; /* raise it a bit to avoid overlap */
+		z-index: 18 !important; /* keep stacking consistent */
+		opacity: 0.95 !important;
+	}
+
+	/* Force the ABOUT / MAKE STUDYING EASIER block to move left on 375-425px devices */
+	/* The markup applies `ml-48` and `translate-x-24` utilities; override them here. */
+	.about-content {
+		margin-left: 0 !important; /* cancel ml-48 */
+		padding-left: 0 !important;
+		transform: none !important;
+		display: block !important;
+		text-align: left !important; /* align left when moved */
+	}
+
+	.about-heading {
+		/* nudge the heading a little to the right compared to previous position */
+		transform: translateX(-0.6rem) translateY(-0.25rem) !important;
+		white-space: normal !important;
+		text-align: left !important;
+		max-width: 100% !important;
+	}
+
+	.about-desc,
+	.about-desc.translate-x-24 {
+		/* center the about paragraph and make it smaller on 375-425px screens */
+		transform: translateX(0) !important; /* cancel previous left nudges */
+		text-align: center !important;
+		max-width: 16rem !important; /* tighter readable width */
+		font-size: 0.85rem !important; /* slightly smaller for this breakpoint */
+		line-height: 1.25 !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+
+	/* .brand-label styles removed (ARALYTICS moved to header) */
 
 	/* Slightly reduce modal login button size on narrow phones so it doesn't look oversized */
 	#login-modal #login-form button[type="submit"] {
@@ -175,10 +456,7 @@
 		transform: translateX(-0.4rem) translateY(-1.6rem) !important;
 	}
 
-	/* Slightly reduce brand label on tablet-sized screens */
-	.brand-label {
-		font-size: 36px !important;
-	}
+	/* .brand-label styles removed (ARALYTICS moved to header) */
 
 	/* Nudge hero left column up a bit on tablet screens */
 	.w-\[40\%\] {
