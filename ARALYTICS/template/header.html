@@ -1,6 +1,12 @@
 <!-- Link to header-specific overrides (narrow-range adjustments for 375-425px devices) -->
 <link rel="stylesheet" href="../CSS/header.css">
+<!-- Jaro font (400 regular) for the brand label -->
+<link href="https://fonts.googleapis.com/css2?family=Jaro:wght@400&display=swap" rel="stylesheet">
 <header class="w-full fixed top-6 left-0 flex justify-center">
+  <!-- Brand label moved into header so it can be controlled from the template -->
+  <!-- Use Tailwind utilities: text-[48px] for 48px size, font-normal => weight 400
+    and an arbitrary font-family value that prefers Jaro when available -->
+  <a href="#" class="brand-label absolute left-6 top-0 text-[48px] font-normal text-gray-800 [font-family:'Jaro',sans-serif] transform -translate-y-7">ARALYTICS</a>
   <!-- Mobile hamburger button (hidden on larger screens, shown on narrow screens) -->
   <button id="burger-btn" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation" class="hidden">
     <!-- simple hamburger SVG -->
